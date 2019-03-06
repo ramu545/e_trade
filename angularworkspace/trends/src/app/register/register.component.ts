@@ -16,7 +16,7 @@ export class RegisterComponent implements OnInit {
   public register():void{
     this.authservice.registerUser(this.registerdata).subscribe((res)=>{
       if(res.status && res.token){
-        sessionStorage.setItem('key', res.token);
+        sessionStorage.setItem('jwt-token', res.token);
         this._router.navigate(['/products']);
       }
       else{

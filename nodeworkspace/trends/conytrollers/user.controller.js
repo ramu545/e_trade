@@ -132,8 +132,8 @@ module.exports.authentication = (req,res,next)=>{
                 res.status(401).send(error);
             }
             else{
-                next();
-                //res.status(200).send(sucess);
+                //next();
+                res.status(200).send(sucess);
             }
         }); 
     }

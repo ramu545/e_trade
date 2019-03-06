@@ -7,7 +7,7 @@ const prodctrl = require('../conytrollers/product.ctrl');
 
 router
 .route('/products/product')
-.post(prodctrl.productupload);//userctrl.authentication,
+.post(userctrl.authentication,prodctrl.productupload);
 
 router
 .route('/products')

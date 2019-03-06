@@ -21,12 +21,17 @@ module.exports.productupload = (req,res,next)=>{
             if(err){
                 res.status(500).send(err);
             }else{
-                console.log(req.body);
+                //console.log(req.body);
                 res.status(200).send(req.files);
             }
         })
     }
     else{
-        console.log('not authorized');
+        let error={
+            name:"not authorized",
+            message:"Please Login ",
+            Status:false
+        }
+        res.status(401).json(error);
     }
 }

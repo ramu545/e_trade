@@ -22,8 +22,9 @@ export class AuthService {
   }
 
   public loggedIn():boolean{
-    var tokenl = localStorage.getItem('token');
-    var tokens = sessionStorage.getItem('token');
+    var tokenl = localStorage.getItem('jwt-token');
+    var tokens = sessionStorage.getItem('jwt-token');
+    //console.log(tokenl);
     if(tokenl || tokens){
       return true;
     }
@@ -33,8 +34,8 @@ export class AuthService {
   }
 
   public logOut():void{
-    localStorage.removeItem('token');
-    sessionStorage.removeItem('token');
+    localStorage.removeItem('jwt-token');
+    sessionStorage.removeItem('jwt-token');
     this._router.navigate(['/login']);
   }
 }

@@ -14,9 +14,11 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { FormsModule }   from '@angular/forms';
 import { AuthService } from './services/auth.service';
-import { HttpClientModule } from '@angular/common/http';
-import { ProductsService } from './servivces/products.service';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ProduploadComponent } from './products/produpload/produpload.component';
+import { ProductsService } from './services/products.service';
+import { HttpIntersepterService } from './services/http-intersepter.service';
+import { Userpipe } from './pipes/userpipe.pipe';
 
 @NgModule({
   declarations: [
@@ -30,7 +32,8 @@ import { ProduploadComponent } from './products/produpload/produpload.component'
     ProductsComponent,
     LoginComponent,
     RegisterComponent,
-    ProduploadComponent
+    ProduploadComponent,
+    Userpipe
   ],
   imports: [
     BrowserModule,
@@ -38,7 +41,9 @@ import { ProduploadComponent } from './products/produpload/produpload.component'
     FormsModule,
     HttpClientModule
   ],
-  providers: [AuthService,ProductsService],
+  providers: [AuthService,ProductsService,
+    { provide: HTTP_INTERCEPTORS, useClass: HttpIntersepterService, multi: true }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

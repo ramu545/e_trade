@@ -15,9 +15,9 @@ export class LoginComponent implements OnInit {
   }
   public loginuser():void{
     this.authservice.loginUser(this.logindata).subscribe((res)=>{
-      //console.log(this.logindata);
+      
       if(res.status && res.token){
-        localStorage.setItem('token', res.token);
+        localStorage.setItem('jwt-token', res.token);
         this._router.navigate(['/products']);
       }else{
         console.log('errorin condition');
