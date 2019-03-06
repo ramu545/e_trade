@@ -1,0 +1,39 @@
+<form class="form-inline" encrypt="multipart/form-data">
+  
+  <div class="form-group mx-sm-3 mb-2">
+    <label for="name" >Product Name</label>
+    <input type="text" [(ngModel)]="productData.name" class="form-control" name ="name" id="name">
+  </div>
+
+  <div class="form-group mx-sm-3 mb-2">
+    <label for="title" >Product title</label>
+    <input type="text" [(ngModel)]="productData.title" class="form-control" name ="title" id="title">
+  </div>
+
+  <div class="form-group mx-sm-3 mb-2">
+    <label for="category" >Product category</label>
+    <input type="text" [(ngModel)]="productData.category" class="form-control" name ="category" id="category">
+  </div>
+
+  <div class="form-group mx-sm-3 mb-2">
+    <label for="price">Product price</label>
+    <input type="text" [(ngModel)]="productData.price" class="form-control" name ="price" id="price">
+  </div>
+
+  <div class="form-group mx-sm-3 mb-2">
+    <label for="category" >Product description</label>
+    <textarea [(ngModel)]="productData.description" name="description" id="description" class="form-control"></textarea>
+  </div>
+
+  <div class="form-group mx-sm-3 mb-2">
+      <label for="image">image</label>
+      <input type="file" [(ngModel)]="productData.image" class="form-control" id="image" name="image">
+  </div>
+
+  <div class="form-group mx-sm-3 mb-2">
+      <label for="largeImage">largeImage</label>
+      <input type="file" [(ngModel)]="productData.largeImage" class="form-control" id="largeImage" name="largeImage">
+  </div>
+
+  <button type="submit" class="btn btn-primary mb-2" (click)="uploadProduct()" >Upload Product</button>
+</form>
