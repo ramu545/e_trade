@@ -1,4 +1,5 @@
 const ProdModel = require("mongoose").model('Product');
+const User = mongoose.model('User');
 const multer = require("multer");
 var jwtDecode = require('jwt-decode');
 
