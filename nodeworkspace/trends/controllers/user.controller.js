@@ -2,6 +2,8 @@ const mongoose = require('mongoose');
 const User = mongoose.model('User');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
+const smtpTransport = require('nodemailer-smtp-transport')
+const nodemailer = require('nodemailer');
 const CONFIG =require('../models/config');
 
 module.exports.register = async (req,res,next)=>{
@@ -41,7 +43,7 @@ module.exports.register = async (req,res,next)=>{
                             res.status(500).send(error);
                         }
                         else{
-                            let jwttoken = jwt.sign({data:user}, CONFIG.signature, { expiresIn: '1h' });
+                            let jwttoken = jwt.sign({_id:user._id}, CONFIG.signature, { expiresIn: '1h' });
                             let data = {
                                 status:true,
                                 token:jwttoken
@@ -90,7 +92,7 @@ module.exports.loginuser =async (req,res,next)=>{
                         res.status(401).send(error);
                     }
                     else{
-                        let jwttoken = jwt.sign({data:user}, CONFIG.signature, { expiresIn: '1h' });
+                        let jwttoken = jwt.sign({_id:user._id}, CONFIG.signature, { expiresIn: '1h' });
                         let data = {
                             status:true,
                             token:jwttoken
@@ -132,8 +134,24 @@ module.exports.authentication = (req,res,next)=>{
                 res.status(401).send(error);
             }
             else{
-                //next();
-                res.status(200).send(sucess);
+                User.findById(sucess._id,(err,res)=>{
+                    console.log(res);
+                    if(err){
+                     let error={
+                         message:"Finding server error",
+                         token:null
+                     }
+                     res.status(500).json(error); 
+                    }else if(!res){
+                     let error={
+                         message:"Failed to authenticate User",
+                         token:null
+                     }
+                    res.status(401).json(error);
+                    }else{
+                        next();
+                    }
+                })
             }
         }); 
     }
@@ -156,6 +174,44 @@ module.exports.profile = async (req,res,next)=>{
                     active:true
                 }
                 res.status(200).send(data);
+
+                // var transporter = nodemailer.createTransport({
+                //     host: 'smtp.gmail.com',
+                //     port: 465,
+                //     secure: true, // use SSL
+                //     auth: {
+                //         user: 'myemail@gmail.com',
+                //         pass: 'myPassword'
+                //     }
+                // });
+                // const transporter = nodemailer.createTransport(smtpTransport({
+                //     service: 'gmail',
+                //     auth: {
+                //         user: 'gollapudiramu48@gmail.com',
+                //         pass: '8143694546'
+                //     }
+                //   }))
+                const transporter = nodemailer.createTransport({
+                    service: 'gmail',
+                    auth: {
+                        user: 'gollapudiramu48@gmail.com',
+                        pass: '8143694546'
+                    }
+                });
+                const mailOptions = {
+                    from: 'gollapudiramu48@gmail.com', // sender address
+                    to: 'ramireddy8143@gmail.com', // list of receivers
+                    subject: 'Your Login successfullywith node Server', // Subject line
+                    text:'Hello node developer',
+                    html: req.query// plain text body
+                };
+                transporter.sendMail(mailOptions, function (err, info) {
+                    if(err)
+                      console.log(err)
+                    else
+                      console.log(info);
+                 });
+
             }
           });
     }

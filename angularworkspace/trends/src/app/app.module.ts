@@ -13,7 +13,7 @@ import { ProductsComponent } from './products/products/products.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { FormsModule }   from '@angular/forms';
-import { AuthService } from './services/auth.service';
+//import { AuthService } from './services/auth.service';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ProduploadComponent } from './products/produpload/produpload.component';
 import { ProductsService } from './services/products.service';
@@ -41,7 +41,7 @@ import { Userpipe } from './pipes/userpipe.pipe';
     FormsModule,
     HttpClientModule
   ],
-  providers: [AuthService,ProductsService,
+  providers: [ProductsService,
     { provide: HTTP_INTERCEPTORS, useClass: HttpIntersepterService, multi: true }
   ],
   bootstrap: [AppComponent]

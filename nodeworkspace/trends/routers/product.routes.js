@@ -1,13 +1,13 @@
 const router = require('express').Router();
 
-const userctrl = require('../conytrollers/user.controller');
-const prodctrl = require('../conytrollers/product.ctrl');
+const userctrl = require('../controllers/user.controller');
+const prodctrl = require('../controllers/product.ctrl');
 
 
 
 router
 .route('/products/product')
-.post(userctrl.authentication,prodctrl.productupload);
+.post(prodctrl.productupload);//userctrl.authentication,
 
 router
 .route('/products')

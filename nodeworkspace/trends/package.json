@@ -19,7 +19,9 @@
   },
   "dependencies": {
     "cors": "^2.8.5",
+    "jwt-decode": "^2.2.0",
     "multer": "^1.4.1",
+    "nodemailer-smtp-transport": "^2.7.4",
     "twilio": "^3.29.0"
   }
 }

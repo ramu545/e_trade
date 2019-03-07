@@ -13,7 +13,7 @@ export class AuthService {
   
   constructor(private _http: HttpClient,private _router:Router) { }
   
-  registerUser(user):Observable<any>{
+  public registerUser(user):Observable<any>{
     return this._http.post<any>(this.registerurl,user);
   }
 
@@ -24,7 +24,7 @@ export class AuthService {
   public loggedIn():boolean{
     var tokenl = localStorage.getItem('jwt-token');
     var tokens = sessionStorage.getItem('jwt-token');
-    //console.log(tokenl);
+
     if(tokenl || tokens){
       return true;
     }

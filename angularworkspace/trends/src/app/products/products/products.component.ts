@@ -16,7 +16,6 @@ export class ProductsComponent implements OnInit {
       console.log(res);
     },(err)=>{
       this.router.navigate(['/login']);
-      console.log(err.status+'  '+err.statusText);
     });
   }
   prodform(){

@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const userctrl = require('../conytrollers/user.controller');
+const userctrl = require('../controllers/user.controller');
 //register
 router
 .route('/register')
@@ -11,7 +11,7 @@ router
  
 router
 .route('/profile/:id')
-.get(userctrl.authentication,userctrl.profile);
+.get(userctrl.profile);//userctrl.authentication,
 
 router
 .route('/user/:id/:name')
