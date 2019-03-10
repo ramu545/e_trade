@@ -12,7 +12,7 @@ import { HomeComponent } from './home/home/home.component';
 import { ProductsComponent } from './products/products/products.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
-import { FormsModule }   from '@angular/forms';
+import { FormsModule, ReactiveFormsModule }   from '@angular/forms';
 //import { AuthService } from './services/auth.service';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ProduploadComponent } from './products/produpload/produpload.component';
@@ -39,6 +39,7 @@ import { Userpipe } from './pipes/userpipe.pipe';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpClientModule
   ],
   providers: [ProductsService,

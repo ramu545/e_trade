@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+//import  'rxjs/add/operator/map';
 
 @Injectable({
   providedIn: 'root'
@@ -17,7 +18,7 @@ export class ProductsService {
   }
 
   public uploadProduscts(productDetails):Observable<any>{
-    return this._httpclient.post<any>(this.prodUploadUrl,productDetails);
+    return this._httpclient.post<any>(this.prodUploadUrl,productDetails);//.map(res = > res.json())
   }
 
 }

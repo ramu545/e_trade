@@ -46,6 +46,7 @@ module.exports.register = async (req,res,next)=>{
                             let jwttoken = jwt.sign({_id:user._id}, CONFIG.signature, { expiresIn: '1h' });
                             let data = {
                                 status:true,
+                                name:user.name,
                                 token:jwttoken
                             }
                         res.status(200).send(data);
@@ -95,6 +96,7 @@ module.exports.loginuser =async (req,res,next)=>{
                         let jwttoken = jwt.sign({_id:user._id}, CONFIG.signature, { expiresIn: '1h' });
                         let data = {
                             status:true,
+                            name:user.name,
                             token:jwttoken
                         }
                         res.status(200).send(data);

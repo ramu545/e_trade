@@ -1,12 +1,33 @@
 const ProdModel = require("mongoose").model('Product');
+const mongoose = require('mongoose');
+const User = mongoose.model('User');
 const multer = require("multer");
 var jwtDecode = require('jwt-decode');
 
 module.exports.products = async (req, res, next) => {
-    //node mailer
-    let token = req.headers['jwt-token'];
-    var decoded = jwtDecode(token);
-    //res.status(200).send(decoded);   
+    if(req.body){
+        let token = req.headers['jwt-token'];
+        var decoded = jwtDecode(token);
+        User.findById(decoded._id,(err,userdata)=>{
+            if(err){
+                let error={
+                    name:"Internal Server Error",
+                    message:"Finding User Error"
+                }
+                res.status(500).json(error);
+            }
+            else{
+                res.status(200).send(userdata);
+            }
+        })
+    }
+    else{
+        let error={
+            name:"Bad Request",
+            message:"Required Fealds are missing"
+        }
+        res.status(400).json(error);
+    }   
 }
 
 // disk storage
@@ -18,9 +39,9 @@ const storage = multer.diskStorage({
         callback(null, file.fieldname + '-' + Date.now());
     }
 });
-const upload = multer({ storage: storage }).array('image', 2);
+const upload = multer({ storage: storage }).any('image');
 
-module.exports.productupload = (req, res, next) => {
+module.exports.productupload = (req, resp, next) => {
     let token = req.headers['jwt-token'];
     var decoded = jwtDecode(token);
     if(req.body){
@@ -30,16 +51,15 @@ module.exports.productupload = (req, res, next) => {
                     name:"Internal Server Error",
                     message:"Finding User Not Found"
                 }
-                res.status(500).json(error);
+                resp.status(500).json(error);
             }
             else{
-                console.log(res);
                 upload(req, res, (err) => {
                     if (err) {
-                        res.status(500).send(err);
+                        resp.status(500).send(err);
                     } else {
-                        //console.log(req.body);
-                        res.status(200).send(req.files);
+                        console.log(req.file);
+                        resp.status(200).send(req.file);
                     }
                 })
             }

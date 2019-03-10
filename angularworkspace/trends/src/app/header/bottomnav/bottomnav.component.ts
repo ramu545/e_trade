@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
+import { ProductsService } from 'src/app/services/products.service';
 
 @Component({
   selector: 'app-bottomnav',
@@ -7,9 +8,11 @@ import { AuthService } from 'src/app/services/auth.service';
   styleUrls: ['./bottomnav.component.css']
 })
 export class BottomnavComponent implements OnInit {
+  message:string;
+  constructor(private authserve:AuthService,private productServices:ProductsService) { }
 
-  constructor(private authserve:AuthService) { }
-
-  ngOnInit() {
+  ngOnInit() { 
+    this.productServices.getproducts().subscribe(message => { this.message = message.name; });
   }
+  
 }

@@ -27,13 +27,14 @@
 
   <div class="form-group mx-sm-3 mb-2">
       <label for="image">image</label>
-      <input type="file" [(ngModel)]="productData.image" class="form-control" id="image" name="image">
+      <input type="file" id="image" class="form-control" id="image" name="image" (change)="onFileChanged($event)" />
+      <!-- <input type="file" [(ngModel)]="productData.image" class="form-control" id="image" name="image"> -->
   </div>
 
-  <div class="form-group mx-sm-3 mb-2">
+  <!-- <div class="form-group mx-sm-3 mb-2">
       <label for="largeImage">largeImage</label>
       <input type="file" [(ngModel)]="productData.largeImage" class="form-control" id="largeImage" name="largeImage">
-  </div>
+  </div> -->
 
   <button type="submit" class="btn btn-primary mb-2" (click)="uploadProduct()" >Upload Product</button>
 </form>

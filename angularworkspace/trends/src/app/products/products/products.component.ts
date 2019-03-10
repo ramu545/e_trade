@@ -13,7 +13,7 @@ export class ProductsComponent implements OnInit {
 
   ngOnInit() {
     this.productServices.getproducts().subscribe((res)=>{
-      console.log(res);
+      localStorage.setItem("username",res.name);
     },(err)=>{
       this.router.navigate(['/login']);
     });
