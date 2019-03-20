@@ -29,7 +29,7 @@
     <tbody>
       <tr *ngFor="let product of products">
           <td scope="col" width="120">{{product.id}}</td>
-          <td scope="col" width="120" [ngStyle]="{'background-color':'blue','border-radius':'26px','text-align':'center'}" [ngClass]="product.employee_age==23 ? 'text-danger' : 'text-default'">
+          <td scope="col" appDirective width="120" [ngStyle]="{'background-color':'blue','border-radius':'26px','text-align':'center'}" [ngClass]="product.employee_age==23 ? 'text-danger' : 'text-default'">
             {{product.employee_age}}
           </td>
           <td scope="col" width="120">{{product.employee_name}}</td>
