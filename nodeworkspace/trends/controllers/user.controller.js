@@ -137,7 +137,7 @@ module.exports.authentication = (req,res,next)=>{
             }
             else{
                 User.findById(sucess._id,(err,res)=>{
-                    console.log(res);
+                    //console.log(res);
                     if(err){
                      let error={
                          message:"Finding server error",

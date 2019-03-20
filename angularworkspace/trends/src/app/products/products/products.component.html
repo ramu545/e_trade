@@ -8,18 +8,35 @@
 
 <!-- Product Items in table form -->
 <div class="card">
+  <input type="text" #myInput [(ngModel)]="empname" (keyup)="serach()">
     <table class="table table-hover shopping-cart-wrap">
     <thead class="text-muted">
     <tr>
-      <th scope="col" width="120">Product</th>
+      <!-- <th scope="col" width="120">Product</th>
       <th scope="col" width="120">Description</th>
       <th scope="col" width="120">Quantity</th>
       <th scope="col" width="120">Price</th>
-      <th scope="col" width="200" class="text-right">Action</th>
+      <th scope="col" width="200" class="text-right">Action</th> -->
+      
+      <th scope="col" width="120">ID</th>
+      <th scope="col" width="120">Employee Age</th>
+      <th scope="col" width="120">Employee Name</th>
+      <th scope="col" width="120">Employee Salary</th>
+      <th scope="col" width="200" class="text-right">Profile Imag</th>
+
     </tr>
     </thead>
     <tbody>
-        <tr>
+      <tr *ngFor="let product of products">
+          <td scope="col" width="120">{{product.id}}</td>
+          <td scope="col" width="120" [ngStyle]="{'background-color':'blue','border-radius':'26px','text-align':'center'}" [ngClass]="product.employee_age==23 ? 'text-danger' : 'text-default'">
+            {{product.employee_age}}
+          </td>
+          <td scope="col" width="120">{{product.employee_name}}</td>
+          <td scope="col" width="120">{{product.employee_salary}}</td>
+          <td scope="col" width="200" class="text-right">{{product.profile_image}}</td>
+      </tr>
+        <!-- <tr>
             <td>
           <figure class="media">
             <div class="img-wrap"><img src="http://bootstrap-ecommerce.com/main/images/items/2.jpg" class="img-thumbnail img-sm"></div>
@@ -51,13 +68,13 @@
               <div class="price-wrap"> 
                 <var class="price">USD 145</var> 
                 <small class="text-muted">(USD5 each)</small> 
-              </div> <!-- price-wrap .// -->
+              </div> 
             </td>
             <td class="text-right"> 
             <a title="" href="" class="btn btn-outline-success" data-toggle="tooltip" data-original-title="Save to Wishlist"> <i class="fa fa-heart"></i></a> 
             <a href="" class="btn btn-outline-danger"> × Remove</a>
             </td>
-          </tr>
+          </tr> -->
     </tbody>
     </table>
     </div> <!-- card.// -->

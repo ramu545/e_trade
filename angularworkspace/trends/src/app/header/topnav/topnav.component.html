@@ -1,7 +1,7 @@
 <div class="alert alert-warning alert-dismissible fade show" role="alert">
-    <strong>Welcome</strong> New Trend's.
+    <strong>Welcome</strong> {{message}}.
     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
       <span aria-hidden="true">&times;</span>
     </button>
   </div>
-<app-bottomnav></app-bottomnav>
+<app-bottomnav (chaildevent)="message=$event" [topnavData]='Username'></app-bottomnav>

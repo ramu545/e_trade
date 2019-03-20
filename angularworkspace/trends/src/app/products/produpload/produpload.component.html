@@ -1,40 +1,34 @@
-<form class="form-inline" encrypt="multipart/form-data">
+<form class="form-inline" [formGroup]="productForm" (ngSubmit)="uploadProduct()">
   
-  <div class="form-group mx-sm-3 mb-2">
-    <label for="name" >Product Name</label>
-    <input type="text" [(ngModel)]="productData.name" class="form-control" name ="name" id="name">
+  <div class="form-label-group">
+    <label for="pname">Product Name</label>
+    <input type="text" class="form-control" formControlName="pname">
   </div>
 
-  <div class="form-group mx-sm-3 mb-2">
-    <label for="title" >Product title</label>
-    <input type="text" [(ngModel)]="productData.title" class="form-control" name ="title" id="title">
+  <div class="form-label-group mx-sm-3 mb-2">
+    <label for="ptitle" >Product title</label>
+    <input type="text" class="form-control" formControlName="ptitle">
   </div>
 
-  <div class="form-group mx-sm-3 mb-2">
-    <label for="category" >Product category</label>
-    <input type="text" [(ngModel)]="productData.category" class="form-control" name ="category" id="category">
+  <div class="form-label-group mx-sm-3 mb-2">
+    <label for="pcategory" >Product category</label>
+    <input type="text" class="form-control" formControlName="pcategory">
   </div>
 
-  <div class="form-group mx-sm-3 mb-2">
+  <div class="form-label-group mx-sm-3 mb-2">
     <label for="price">Product price</label>
-    <input type="text" [(ngModel)]="productData.price" class="form-control" name ="price" id="price">
+    <input type="number" class="form-control" formControlName="price">
+  </div>
+
+  <div class="form-label-group mx-sm-3 mb-2">
+    <label for="pDescription" >Product description</label>
+    <textarea class="form-control" formControlName="pDescription"></textarea>
   </div>
 
   <div class="form-group mx-sm-3 mb-2">
-    <label for="category" >Product description</label>
-    <textarea [(ngModel)]="productData.description" name="description" id="description" class="form-control"></textarea>
+      <label for="pimage">image</label>
+      <input type="file" name="pimage" (change)="onFileChanged($event)" #pimage>
   </div>
 
-  <div class="form-group mx-sm-3 mb-2">
-      <label for="image">image</label>
-      <input type="file" id="image" class="form-control" id="image" name="image" (change)="onFileChanged($event)" />
-      <!-- <input type="file" [(ngModel)]="productData.image" class="form-control" id="image" name="image"> -->
-  </div>
-
-  <!-- <div class="form-group mx-sm-3 mb-2">
-      <label for="largeImage">largeImage</label>
-      <input type="file" [(ngModel)]="productData.largeImage" class="form-control" id="largeImage" name="largeImage">
-  </div> -->
-
-  <button type="submit" class="btn btn-primary mb-2" (click)="uploadProduct()" >Upload Product</button>
+  <button type="submit" class="btn btn-primary mb-2">Upload Product</button>
 </form>

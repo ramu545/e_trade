@@ -13,14 +13,8 @@ const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'register', component: RegisterComponent},
   { path: 'login', component: LoginComponent},
-  { path: 'products', component: ProductsComponent, canActivate:[AuthGuardGuard],
-  children: [
-    {
-    path:  'product',
-    component:  ProduploadComponent, canActivate:[AuthGuardGuard]
-    }
-  ] 
-  },
+  { path: 'products', component: ProductsComponent, canActivate:[AuthGuardGuard]},
+  { path:  'product', component:  ProduploadComponent, canActivate:[AuthGuardGuard] },
   { path: 'LogOut',redirectTo: '/home',pathMatch: 'full'},
   { path: '**', component:  PagenotFoundComponent}
 ];

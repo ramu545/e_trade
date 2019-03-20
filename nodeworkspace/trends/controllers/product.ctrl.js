@@ -39,7 +39,7 @@ const storage = multer.diskStorage({
         callback(null, file.fieldname + '-' + Date.now());
     }
 });
-const upload = multer({ storage: storage }).any('image');
+const upload = multer({ storage: storage }).any('pimage');
 
 module.exports.productupload = (req, resp, next) => {
     let token = req.headers['jwt-token'];

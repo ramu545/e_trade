@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../services/auth.service';
 import { Router } from '@angular/router';
-//import { BehaviorSubject } from 'rxjs';
 
 @Component({
   selector: 'app-login',
@@ -10,9 +9,6 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
   public logindata = {};
-  
-  // private userName = new BehaviorSubject<string[]>([]);
-  // currentUser = this.userName.asObservable();
 
   constructor(private authservice:AuthService, private _router:Router) { }
 
@@ -22,7 +18,6 @@ export class LoginComponent implements OnInit {
     this.authservice.loginUser(this.logindata).subscribe((res)=>{
       if(res.status && res.token){
         localStorage.setItem('jwt-token', res.token);
-        //this.userName.next(res.name)
         this._router.navigate(['/products']);
       }else{
         //console.log('errorin condition');

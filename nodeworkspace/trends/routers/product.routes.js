@@ -3,11 +3,9 @@ const router = require('express').Router();
 const userctrl = require('../controllers/user.controller');
 const prodctrl = require('../controllers/product.ctrl');
 
-
-
 router
-.route('/products/product')
-.post(userctrl.authentication,prodctrl.productupload);//
+.route('/product')
+.post(userctrl.authentication,prodctrl.productupload);
 
 router
 .route('/products')

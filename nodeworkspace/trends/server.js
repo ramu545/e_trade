@@ -1,14 +1,18 @@
 require('./models/conection');
 //require('./twilio/sendsms');
+const io = require('socket.io');
+const http = require('http');
 const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const path = require('path');
+const morgan = require('morgan');
 const CONFIG = require('./models/config');
 const userroute = require('./routers/user.route');
 const productrouter = require('./routers/product.routes');
 const app = express();
 
+app.use(morgan(':method :url : responce-time'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 

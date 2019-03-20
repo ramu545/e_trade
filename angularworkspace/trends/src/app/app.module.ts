@@ -19,6 +19,8 @@ import { ProduploadComponent } from './products/produpload/produpload.component'
 import { ProductsService } from './services/products.service';
 import { HttpIntersepterService } from './services/http-intersepter.service';
 import { Userpipe } from './pipes/userpipe.pipe';
+import { FilterPipe } from './products/products/filter.pipe';
+import { TestDirective } from './testdirective.directive';
 
 @NgModule({
   declarations: [
@@ -33,7 +35,9 @@ import { Userpipe } from './pipes/userpipe.pipe';
     LoginComponent,
     RegisterComponent,
     ProduploadComponent,
-    Userpipe
+    Userpipe,
+    FilterPipe,
+    TestDirective
   ],
   imports: [
     BrowserModule,
